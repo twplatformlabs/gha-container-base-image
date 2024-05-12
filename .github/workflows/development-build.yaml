@@ -35,3 +35,4 @@ jobs:
           set -eo pipefail
           echo $DOCKER_PASSWORD | docker login -u $DOCKER_LOGIN --password-stdin docker.io
           docker build -t twdps/gha-container-base-iamge:alpine-stable -f Dockerfile .
+          docker push twdps/gha-container-base-iamge:alpine-stable
