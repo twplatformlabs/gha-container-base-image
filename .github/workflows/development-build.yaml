@@ -1,0 +1,41 @@
+# yamllint disable rule:line-length
+# yamllint disable rule:truthy
+---
+run-name: static code analysis
+
+on:
+  workflow_call:
+
+    inputs:
+
+      working-directory:
+        description: Set working directory. Default is ./.
+        required: false
+        type: string
+        default: .
+
+jobs:
+
+  static-code-analysis:
+    name: static code analysis
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: checkout code
+        uses: actions/checkout@0ad4b8fadaa221de15dcec353f45205ec38ea70b          # v4.1.4
+
+      - name: Load credentials
+        uses: 1password/load-secrets-action@581a835fb51b8e7ec56b71cf2ffddd7e68bb25e0    # v2.0.0
+        with:
+          export-env: true
+        env:
+          OP_SERVICE_ACCOUNT_TOKEN: ${{ secrets.OP_SERVICE_ACCOUNT_TOKEN }}
+          DOCKER_LOGIN: op://empc-lab/svc-docker/username
+          DOCKER_PASSWORD: op://empc-lab/svc-docker/password
+
+      - name: check context
+        shell: bash
+        run: |
+          set -eo pipefail
+          echo $DOCKER_PASSWORD | docker login -u $DOCKER_LOGIN --password-stdin docker.io
+          docker build -t twdps/gha-container-base-iamge:alpine-stable -f Dockerfile .

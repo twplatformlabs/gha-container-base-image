@@ -1,1 +1,1 @@
-# gha-base-image
+# gha-container-base-image
