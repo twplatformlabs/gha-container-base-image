@@ -26,8 +26,8 @@ jobs:
           export-env: true
         env:
           OP_SERVICE_ACCOUNT_TOKEN: ${{ secrets.OP_SERVICE_ACCOUNT_TOKEN }}
-          DOCKER_LOGIN: op://empc-lab/svc-docker/username
-          DOCKER_PASSWORD: op://empc-lab/svc-docker/password
+          DOCKER_LOGIN: op://empc-lab/svc-dockerhub/username
+          DOCKER_PASSWORD: op://empc-lab/svc-dockerhub/password
 
       - name: check context
         shell: bash
