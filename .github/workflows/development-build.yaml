@@ -4,15 +4,11 @@
 run-name: static code analysis
 
 on:
-  workflow_call:
-
-    inputs:
-
-      working-directory:
-        description: Set working directory. Default is ./.
-        required: false
-        type: string
-        default: .
+  push:
+    branches:
+      - "*"
+    tags:
+      - "!*"
 
 jobs:
 
