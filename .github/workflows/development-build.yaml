@@ -17,22 +17,27 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: checkout code
-        uses: actions/checkout@0ad4b8fadaa221de15dcec353f45205ec38ea70b          # v4.1.4
+      - name: test action
+        uses: ThoughtWorks-DPS/gha-action-tools/.github/workflows/gha-container-dev-release.yaml@main
+        
+      # - name: checkout code
+      #   uses: actions/checkout@0ad4b8fadaa221de15dcec353f45205ec38ea70b          # v4.1.4
 
-      - name: Load credentials
-        uses: 1password/load-secrets-action@581a835fb51b8e7ec56b71cf2ffddd7e68bb25e0    # v2.0.0
-        with:
-          export-env: true
-        env:
-          OP_SERVICE_ACCOUNT_TOKEN: ${{ secrets.OP_SERVICE_ACCOUNT_TOKEN }}
-          DOCKER_LOGIN: op://empc-lab/svc-dockerhub/username
-          DOCKER_PASSWORD: op://empc-lab/svc-dockerhub/password
+      # - name: Load credentials
+      #   uses: 1password/load-secrets-action@581a835fb51b8e7ec56b71cf2ffddd7e68bb25e0    # v2.0.0
+      #   with:
+      #     export-env: true
+      #   env:
+      #     OP_SERVICE_ACCOUNT_TOKEN: ${{ secrets.OP_SERVICE_ACCOUNT_TOKEN }}
+      #     DOCKER_LOGIN: op://empc-lab/svc-dockerhub/username
+      #     DOCKER_PASSWORD: op://empc-lab/svc-dockerhub/password
 
-      - name: check context
-        shell: bash
-        run: |
-          set -eo pipefail
-          echo $DOCKER_PASSWORD | docker login -u $DOCKER_LOGIN --password-stdin docker.io
-          docker build -t twdps/gha-container-base-image:alpine-stable -f Dockerfile .
-          docker push twdps/gha-container-base-image:alpine-stable
+      # - name:
+
+      # - name: check context
+      #   shell: bash
+      #   run: |
+      #     set -eo pipefail
+      #     echo $DOCKER_PASSWORD | docker login -u $DOCKER_LOGIN --password-stdin docker.io
+      #     docker build -t twdps/gha-container-base-image:alpine-stable -f Dockerfile .
+      #     docker push twdps/gha-container-base-image:alpine-stable
