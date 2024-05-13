@@ -16,7 +16,6 @@ jobs:
     name: static code analysis
     uses: ThoughtWorks-DPS/gha-tools-action/.github/workflows/gha-container-dev-release.yaml@main
 
-
     # steps:
     #   - name: test action
     #     uses: ThoughtWorks-DPS/gha-action-tools/.github/workflows/gha-container-dev-release.yaml@main
