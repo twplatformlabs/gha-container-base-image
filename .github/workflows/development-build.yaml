@@ -14,7 +14,7 @@ jobs:
 
   static-code-analysis:
     name: static code analysis
-    uses: ThoughtWorks-DPS/gha-tools-action/.github/workflows/gha-container-dev-release.yaml@main
+    uses: ThoughtWorks-DPS/gha-tools-action/.github/workflows/static-code-analysis.yaml@main
 
   # static-code-analysis:
   #   name: static code analysis
