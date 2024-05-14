@@ -1,0 +1,24 @@
+# yamllint disable rule:line-length
+---
+name: test step-like
+
+inputs:
+
+  dockerfile:
+    description: Name of dockerfile
+    required: false
+    default: "Dockerfile"
+
+runs:
+  using: "composite"
+
+  steps:
+
+    - name: running a command
+      shell: bash
+      run:  echo "here"
+
+    - name: Install 1Password CLI
+      uses: 1password/install-cli-action@v1
+      with:
+        version: latest
