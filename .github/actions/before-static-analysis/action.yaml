@@ -1,26 +1,26 @@
 # yamllint disable rule:line-length
 ---
-name: test step-like
+name: setup environment
 
-description: test
+description: load values from 1password vault
 
 inputs:
 
-  dockerfile:
-    description: Name of dockerfile
+  instance:
+    description: input value that can be used to control which actions are run
     required: false
-    default: "Dockerfile"
+    default: ""
 
 runs:
   using: "composite"
 
   steps:
 
-    - name: running a command
-      shell: bash
-      run:  echo "here"
-
-    - name: Install 1Password CLI
-      uses: 1password/install-cli-action@v1
+    - name: load values from 1password vault
+      uses: 1password/load-secrets-action@v2
       with:
-        version: latest
+        export-env: true
+      env:
+        DOCKER_LOGIN: op://empc-lab/svc-dockerhub/username
+        DOCKER_PASSWORD: op://empc-lab/svc-dockerhub/password
+        SNYK_TOKEN: op://empc-lab/svc-snyk/api-token
