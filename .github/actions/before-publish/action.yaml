@@ -30,3 +30,9 @@ runs:
       with:
         op-value: empc-lab/svc-cosign-public-key/notesPlain
         out-file: cosign.pub
+
+    - name: load cosign key
+      uses: ThoughtWorks-DPS/1password-action/write-to-file@main
+      with:
+        op-value: empc-lab/svc-cosign-private-key/notesPlain
+        out-file: cosign.key

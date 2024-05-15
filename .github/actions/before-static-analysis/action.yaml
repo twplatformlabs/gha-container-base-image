@@ -24,9 +24,3 @@ runs:
         DOCKER_LOGIN: op://empc-lab/svc-dockerhub/username
         DOCKER_PASSWORD: op://empc-lab/svc-dockerhub/password
         SNYK_TOKEN: op://empc-lab/svc-snyk/api-token
-
-    - name: load cosign public key
-      uses: ThoughtWorks-DPS/1password-action/write-to-file@main
-      with:
-        op-value: empc-lab/svc-cosign-public-key/notesPlain
-        out-file: cosign.pub
