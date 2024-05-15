@@ -1,7 +1,7 @@
 # yamllint disable rule:line-length
 # yamllint disable rule:truthy
 ---
-run-name: publish job container
+run-name: publish job container image
 
 on:
   push:
