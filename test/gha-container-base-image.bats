@@ -71,7 +71,7 @@
 
 @test "1password version" {
   run bash -c "docker exec gha-container-base-image op --version"
-  [[ "${output}" =~ "2.27" ]]
+  [[ "${output}" =~ "2.28" ]]
 }
 
 @test "teller version" {

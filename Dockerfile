@@ -11,7 +11,7 @@ LABEL org.opencontainers.image.title="gha-container-base-image" \
       org.opencontainers.image.created="CREATED" \
       org.opencontainers.image.version="VERSION"
 
-ENV ONEPASSWORD_VERSION=2.27.0
+ENV ONEPASSWORD_VERSION=2.28.0
 ENV TELLER_VERSION=1.5.6
 ENV VAULT_VERSION=1.16.2
 ENV BUILDEVENTS_VERSION=0.16.0
