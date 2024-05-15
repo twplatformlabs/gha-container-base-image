@@ -1,1 +1,4 @@
 .python-version
+cosign.key
+cosign.pub
+manifestid
