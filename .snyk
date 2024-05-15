@@ -2,6 +2,14 @@
 version: v1.25.0
 # Nearly all CVE's are remediated by virtue of the runtime context, e.g., on an ephemeral circleci executor.
 ignore:
+  SNYK-GOLANG-GOOGLEGOLANGORGPROTOBUFENCODINGPROTOJSON-6393703:
+    - "*":
+      reason: Infinite loop
+      expires: 2024-06-01T14:26:34.404Z
+  SNYK-GOLANG-GOOGLEGOLANGORGPROTOBUFINTERNALENCODINGJSON-6393704:
+    - "*":
+      reason: Infinite loop
+      expires: 2024-06-01T14:26:34.404Z
   SNYK-GOLANG-GOLANGORGXCRYPTOSSH-6130669:
     - "*":
       reason: Authentication Bypass by Capture-replay
