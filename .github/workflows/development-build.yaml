@@ -12,8 +12,8 @@ on:
 
 jobs:
 
-  static-code-analysis:
-    name: static code analysis
+  dev-release:
+    name: development build and release
     uses: ThoughtWorks-DPS/gha-tools-action/.github/workflows/job-container-dev-release.yaml@main
     secrets:
       OP_SERVICE_ACCOUNT_TOKEN: ${{ secrets.OP_SERVICE_ACCOUNT_TOKEN }}
@@ -24,3 +24,10 @@ jobs:
       bats-version: 1.11.0
       hadolint-version: 2.12.0
       before-static-analysis: true
+      snyk-scan: true
+      snyk-severity-threshold: medium
+      snyk-organization: twdps
+      bats-test: true
+      bats-run-container-name: gha-container-base-image
+      bats-entry-point: /bin/ash
+      bats-test-path: test/gha-container-base-image.bats
