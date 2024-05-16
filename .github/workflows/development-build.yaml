@@ -1,7 +1,7 @@
 # yamllint disable rule:line-length
 # yamllint disable rule:truthy
 ---
-run-name: development build and release
+name: development build and release
 
 on:
   push:

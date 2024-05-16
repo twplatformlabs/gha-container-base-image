@@ -24,6 +24,9 @@ runs:
         DOCKER_LOGIN: op://empc-lab/svc-dockerhub/username
         DOCKER_PASSWORD: op://empc-lab/svc-dockerhub/password
         SNYK_TOKEN: op://empc-lab/svc-snyk/api-token
+        COSIGN_PASSWORD: op://empc-lab/svc-cosign/passphrase
+        GREN_GITHUB_TOKEN: op://empc-lab/svc-github/access-token
+        SLACK_BOT_TOKEN: op://empc-lab/svc-slack/post-bot-token
 
     - name: load cosign public key
       uses: ThoughtWorks-DPS/1password-action/write-to-file@main

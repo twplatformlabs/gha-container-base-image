@@ -1,7 +1,7 @@
 # yamllint disable rule:line-length
 # yamllint disable rule:truthy
 ---
-run-name: publish image
+name: publish image
 
 on:
   push:
@@ -26,4 +26,5 @@ jobs:
       sign-image: true
       sbom: true
       gren: true
+      release-message: New release ThoughtWorks-DPS/gha-container-base-image
       before-publish: true
