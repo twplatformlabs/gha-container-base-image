@@ -17,7 +17,7 @@ runs:
   steps:
 
     - name: load values from 1password vault
-      uses: 1password/load-secrets-action@v2
+      uses: 1password/load-secrets-action@581a835fb51b8e7ec56b71cf2ffddd7e68bb25e0    # v2.0.0
       with:
         export-env: true
       env:
@@ -29,13 +29,13 @@ runs:
         SLACK_BOT_TOKEN: op://empc-lab/svc-slack/post-bot-token
 
     - name: load cosign public key
-      uses: ThoughtWorks-DPS/1password-action/write-to-file@main
+      uses: ThoughtWorks-DPS/1password-action/write-to-file@2f0a75fadf187f444c855270f8ae09a5c95747d0     # v0.2.3
       with:
         op-value: empc-lab/svc-cosign-public-key/notesPlain
         out-file: cosign.pub
 
     - name: load cosign key
-      uses: ThoughtWorks-DPS/1password-action/write-to-file@main
+      uses: ThoughtWorks-DPS/1password-action/write-to-file@2f0a75fadf187f444c855270f8ae09a5c95747d0     # v0.2.3
       with:
         op-value: empc-lab/svc-cosign-private-key/notesPlain
         out-file: cosign.key
