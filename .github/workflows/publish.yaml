@@ -19,12 +19,8 @@ jobs:
       OP_SERVICE_ACCOUNT_TOKEN: ${{ secrets.OP_SERVICE_ACCOUNT_TOKEN }}
     with:
       image: twdps/gha-container-base-image
-      op-version: 2.28.0
-      cosign-version: 2.2.4
-      syft-version: 1.4.1
-      oras-version: 1.1.0
       sign-image: true
       sbom: true
-      gren: true
+      release-notes: true
       release-message: New release ThoughtWorks-DPS/gha-container-base-image
       before-publish: true
