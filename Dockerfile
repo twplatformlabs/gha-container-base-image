@@ -22,7 +22,6 @@ ENV MUSL_LOCPATH=/usr/share/i18n/locales/musl \
     LANGUAGE="en_US.UTF-8" \
     LC_ALL="en_US.UTF-8"
 
-    # echo "@community http://dl-cdn.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories && \
 # hadolint ignore=DL3003,DL3004,DL4001,SC2035
 RUN apk add --no-cache \
         git==2.43.4-r0 \
