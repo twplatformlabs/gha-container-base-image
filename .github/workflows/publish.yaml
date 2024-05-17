@@ -14,7 +14,7 @@ jobs:
 
   publish:
     name: publish image
-    uses: ThoughtWorks-DPS/gha-tools-action/.github/workflows/publish-container.yaml@62fed61ee4a732fb309006ef6c55f348b7db3441    # v0.2.0
+    uses: ThoughtWorks-DPS/gha-tools-action/.github/workflows/publish-container.yaml@main
     secrets:
       OP_SERVICE_ACCOUNT_TOKEN: ${{ secrets.OP_SERVICE_ACCOUNT_TOKEN }}
     with:

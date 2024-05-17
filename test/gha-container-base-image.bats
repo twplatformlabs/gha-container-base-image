@@ -83,3 +83,8 @@
   run bash -c "docker exec gha-container-base-image vault -v"
   [[ "${output}" =~ "1.16" ]]
 }
+
+@test "gh version" {
+  run bash -c "docker exec gha-container-base-image gh --version"
+  [[ "${output}" =~ "2.39" ]]
+}
