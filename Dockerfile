@@ -30,7 +30,6 @@ RUN apk add --no-cache \
         tar==1.35-r2 \
         gzip==1.13-r0 \
         ca-certificates==20240226-r0 \
-        sudo==1.9.15_p2-r0 \
         tzdata==2024a-r0 \
         gettext-dev==0.22.3-r0 \
         libintl==0.22.3-r0 \
@@ -45,7 +44,7 @@ RUN apk add --no-cache \
         curl==8.5.0-r0 \
         libcurl==8.5.0-r0 \
         curl-dev==8.5.0-r0 \
-        openssl-dev==3.1.4-r6 \
+        openssl-dev==3.1.5-r0 \
         wget==1.21.4-r0 \
         unzip==6.0-r14 \
         zip==3.0-r12 \
@@ -66,12 +65,12 @@ RUN apk add --no-cache \
     rm op.zip && rm op.sig && \
     curl -L https://github.com/tellerops/teller/releases/download/v${TELLER_VERSION}/teller_${TELLER_VERSION}_Linux_x86_64.tar.gz --output teller_${TELLER_VERSION}_Linux_x86_64.tar.gz && \
     tar -xzf teller_${TELLER_VERSION}_Linux_x86_64.tar.gz && \
-    sudo mv teller /usr/local/bin/teller && \
+    mv teller /usr/local/bin/teller && \
     rm teller_${TELLER_VERSION}_Linux_x86_64.tar.gz && \
     curl -SLO "https://releases.hashicorp.com/vault/${VAULT_VERSION}/vault_${VAULT_VERSION}_linux_amd64.zip" > "vault_${VAULT_VERSION}_linux_amd64.zip" && \
-    sudo unzip "vault_${VAULT_VERSION}_linux_amd64.zip" -d /usr/local/bin && \
-    sudo rm "vault_${VAULT_VERSION}_linux_amd64.zip" && \
+    unzip "vault_${VAULT_VERSION}_linux_amd64.zip" -d /usr/local/bin && \
+    rm "vault_${VAULT_VERSION}_linux_amd64.zip" && \
     curl -L -o buildevents https://github.com/honeycombio/buildevents/releases/download/v${BUILDEVENTS_VERSION}/buildevents-linux-amd64 && \
     chmod +x buildevents && \
-    sudo mv buildevents /usr/local/bin/buildevents && \
-    sudo rc-update add docker boot
+    mv buildevents /usr/local/bin/buildevents && \
+    rc-update add docker boot

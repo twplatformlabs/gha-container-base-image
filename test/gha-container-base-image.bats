@@ -1,9 +1,9 @@
 #!/usr/bin/env bats
 
-@test "sudo version" {
-  run bash -c "docker exec gha-container-base-image sudo --version"
-  [[ "${output}" =~ "1.9" ]]
-}
+# @test "sudo version" {
+#   run bash -c "docker exec gha-container-base-image sudo --version"
+#   [[ "${output}" =~ "1.9" ]]
+# }
 
 @test "gettext install" {
   run bash -c "docker exec gha-container-base-image less --version"
