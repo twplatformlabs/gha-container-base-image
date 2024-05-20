@@ -61,7 +61,7 @@ RUN apk add --no-cache \
     make && make install && \
     cd .. && rm -r musl-locales-master* && \
     curl -L https://cache.agilebits.com/dist/1P/op2/pkg/v${ONEPASSWORD_VERSION}/op_linux_amd64_v${ONEPASSWORD_VERSION}.zip -o op.zip && \
-    unzip op.zip && sudo mv op /usr/local/bin/op && \
+    unzip op.zip && mv op /usr/local/bin/op && \
     rm op.zip && rm op.sig && \
     curl -L https://github.com/tellerops/teller/releases/download/v${TELLER_VERSION}/teller_${TELLER_VERSION}_Linux_x86_64.tar.gz --output teller_${TELLER_VERSION}_Linux_x86_64.tar.gz && \
     tar -xzf teller_${TELLER_VERSION}_Linux_x86_64.tar.gz && \
