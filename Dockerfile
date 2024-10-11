@@ -45,7 +45,7 @@ RUN apk add --no-cache \
         libcurl==8.10.1-r0 \
         curl-dev==8.10.1-r0 \
         openssl-dev==3.3.2-r0 \
-        wget==1.21.4-r0 \
+        wget==1.24.5-r0 \
         unzip==6.0-r14 \
         zip==3.0-r12 \
         bzip2=1.0.8-r6 \
