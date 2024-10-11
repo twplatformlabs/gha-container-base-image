@@ -2,7 +2,7 @@
 
 @test "gcc version" {
   run bash -c "docker exec gha-container-base-image gcc --version"
-  [[ "${output}" =~ "14.1" ]]
+  [[ "${output}" =~ "13.1" ]]
 }
 
 @test "cmake version" {
