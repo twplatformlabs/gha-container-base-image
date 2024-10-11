@@ -16,9 +16,7 @@ ENV TELLER_VERSION=1.5.6
 ENV VAULT_VERSION=1.18.0
 ENV BUILDEVENTS_VERSION=0.16.0
 
-# hadolint ignore=DL3044
-ENV MUSL_LOCPATH=/usr/share/i18n/locales/musl \
-    LANG="C.UTF-8" \
+ENV LANG="C.UTF-8" \
     LANGUAGE="en_US.UTF-8" \
     LC_ALL="en_US.UTF-8"
 
@@ -32,7 +30,6 @@ RUN apk add --no-cache \
         ca-certificates==20240705-r0 \
         tzdata==2024b-r0 \
         gettext-dev==0.22.5-r0 \
-        libintl==0.22.3-r0 \
         build-base==0.5-r3 \
         musl==1.2.5-r0 \
         musl-dev==1.2.5-r0 \
