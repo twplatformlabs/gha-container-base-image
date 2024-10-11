@@ -50,7 +50,7 @@ RUN apk add --no-cache \
         zip==3.0-r12 \
         bzip2=1.0.8-r6 \
         jq==1.7.1-r0 \
-        git-lfs==3.4.1-r3 \
+        git-lfs==3.5.1-r4 \
         gnupg==2.4.4-r0 \
         docker==25.0.5-r1 \
         openrc==0.52.1-r2 \
