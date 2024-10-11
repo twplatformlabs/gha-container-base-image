@@ -25,7 +25,7 @@ ENV MUSL_LOCPATH=/usr/share/i18n/locales/musl \
 # hadolint ignore=DL3003,DL3004,DL4001,SC2035
 RUN apk add --no-cache \
         git==2.45.2-r0 \
-        github-cli==2.39.2-r3 \
+        github-cli==2.47.0-r4 \
         openssh==9.6_p1-r0 \
         tar==1.35-r2 \
         gzip==1.13-r0 \
