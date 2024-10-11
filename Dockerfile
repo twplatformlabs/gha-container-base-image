@@ -29,14 +29,14 @@ RUN apk add --no-cache \
         openssh==9.7_p1-r4 \
         tar==1.35-r2 \
         gzip==1.13-r0 \
-        ca-certificates==20240226-r0 \
-        tzdata==2024a-r0 \
-        gettext-dev==0.22.3-r0 \
+        ca-certificates==20240705-r0 \
+        tzdata==2024b-r0 \
+        gettext-dev==0.22.5-r0 \
         libintl==0.22.3-r0 \
         build-base==0.5-r3 \
-        musl==1.2.4_git20230717-r4 \
-        musl-dev==1.2.4_git20230717-r4 \
-        musl-utils==1.2.4_git20230717-r4 \
+        musl==1.2.5-r0 \
+        musl-dev==1.2.5-r0 \
+        musl-utils==1.2.5-r0 \
         gcc==13.2.1_git20231014-r0 \
         g++==13.2.1_git20231014-r0 \
         cmake==3.27.8-r0 \
