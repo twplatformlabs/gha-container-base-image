@@ -26,7 +26,7 @@ ENV MUSL_LOCPATH=/usr/share/i18n/locales/musl \
 RUN apk add --no-cache \
         git==2.45.2-r0 \
         github-cli==2.47.0-r4 \
-        openssh==9.6_p1-r0 \
+        openssh==9.7_p1-r4 \
         tar==1.35-r2 \
         gzip==1.13-r0 \
         ca-certificates==20240226-r0 \
