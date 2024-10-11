@@ -1,4 +1,4 @@
-FROM alpine:3.19.1
+FROM alpine:3.20.3
 
 LABEL org.opencontainers.image.title="gha-container-base-image" \
       org.opencontainers.image.description="Alpine-based github actions job container image" \
@@ -11,9 +11,9 @@ LABEL org.opencontainers.image.title="gha-container-base-image" \
       org.opencontainers.image.created="CREATED" \
       org.opencontainers.image.version="VERSION"
 
-ENV ONEPASSWORD_VERSION=2.28.0
+ENV ONEPASSWORD_VERSION=2.30.0
 ENV TELLER_VERSION=1.5.6
-ENV VAULT_VERSION=1.16.2
+ENV VAULT_VERSION=1.18.0
 ENV BUILDEVENTS_VERSION=0.16.0
 
 # hadolint ignore=DL3044
@@ -24,7 +24,7 @@ ENV MUSL_LOCPATH=/usr/share/i18n/locales/musl \
 
 # hadolint ignore=DL3003,DL3004,DL4001,SC2035
 RUN apk add --no-cache \
-        git==2.43.4-r0 \
+        git==2.45.2-r0 \
         github-cli==2.39.2-r3 \
         openssh==9.6_p1-r0 \
         tar==1.35-r2 \
