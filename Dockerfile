@@ -37,9 +37,9 @@ RUN apk add --no-cache \
         musl==1.2.5-r0 \
         musl-dev==1.2.5-r0 \
         musl-utils==1.2.5-r0 \
-        gcc==13.2.1_git20231014-r0 \
-        g++==13.2.1_git20231014-r0 \
-        cmake==3.27.8-r0 \
+        gcc==13.2.1_git20240309-r0 \
+        g++==13.2.1_git20240309-r0 \
+        cmake==3.29.3-r0 \
         make==4.4.1-r2 \
         curl==8.5.0-r0 \
         libcurl==8.5.0-r0 \
