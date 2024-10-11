@@ -54,7 +54,7 @@ RUN apk add --no-cache \
         gnupg==2.4.5-r0 \
         docker==26.1.5-r0 \
         openrc==0.54-r1 \
-        bash==5.2.21-r0 && \
+        bash==5.2.26-r0 && \
     wget -q https://gitlab.com/rilian-la-te/musl-locales/-/archive/master/musl-locales-master.zip && \
     unzip musl-locales-master.zip && cd musl-locales-master && \
     cmake -DLOCALE_PROFILE=OFF -D CMAKE_INSTALL_PREFIX:PATH=/usr . && \
