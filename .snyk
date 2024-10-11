@@ -78,4 +78,12 @@ ignore:
     - "*":
       reason: Use after free
       expires: 2024-06-01T14:26:34.404Z
+  SNYK-GOLANG-GITHUBCOMHASHICORPGORETRYABLEHTTP-7362036:
+    - "*":
+      reason: Insertion of Sensitive Information into Log File
+      expires: 2024-06-01T14:26:34.404Z
+  SNYK-GOLANG-GITHUBCOMSIRUPSENLOGRUS-5564391:
+    - "*":
+      reason: Denial of Service (DoS)
+      expires: 2024-06-01T14:26:34.404Z
 patch: {}
