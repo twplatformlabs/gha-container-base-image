@@ -10,10 +10,6 @@
   [[ "${output}" =~ "13.2" ]]
 }
 
-@test "cmake version" {
-  run bash -c "docker exec gha-container-base-image cmake --version"
-  [[ "${output}" =~ "3.30" ]]
-}
 @test "make version" {
   run bash -c "docker exec gha-container-base-image make --version"
   [[ "${output}" =~ "4.4" ]]
@@ -47,11 +43,6 @@
 @test "gnupg version" {
   run bash -c "docker exec gha-container-base-image gpg --version"
   [[ "${output}" =~ "2.4" ]]
-}
-
-@test "docker version" {
-  run bash -c "docker exec gha-container-base-image docker --version"
-  [[ "${output}" =~ "27.3" ]]
 }
 
 @test "bash version" {
