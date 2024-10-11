@@ -1,0 +1,90 @@
+FROM ubuntu:oracular-20240918
+
+LABEL org.opencontainers.image.title="gha-container-base-image" \
+      org.opencontainers.image.description="Ubuntu-based github actions job container image" \
+      org.opencontainers.image.documentation="https://github.com/ThoughtWorks-DPS/gha-container-base-image" \
+      org.opencontainers.image.source="https://github.com/ThoughtWorks-DPS/gha-container-base-image" \
+      org.opencontainers.image.url="https://github.com/ThoughtWorks-DPS/gha-container-base-image" \
+      org.opencontainers.image.vendor="ThoughtWorks, Inc." \
+      org.opencontainers.image.authors="nic.cheneweth@thoughtworks.com" \
+      org.opencontainers.image.licenses="MIT" \
+      org.opencontainers.image.created="CREATED" \
+      org.opencontainers.image.version="VERSION"
+
+ENV DOCKER_VERSION=5:27.3.1-1~ubuntu.24.04~noble
+ENV DOCKER_BUILDX_VERSION=0.16.2-1~ubuntu.24.04~noble
+ENV DOCKER_COMPOSE_VERSION=2.29.2-1~ubuntu.24.04~noble
+ENV ONEPASSWORD_VERSION=2.30.0
+ENV VAULT_VERSION=1.17.3
+ENV TELLER_VERSION=1.5.6
+ENV BUILDEVENTS_VERSION=0.16.0
+ENV DEBIAN_FRONTEND=noninteractive
+# ENV TELLER_VERSION=2.0.7
+
+ENV PATH=/home/circleci/bin:/home/circleci/.local/bin:$PATH \
+	LANG=en_US.UTF-8 \
+	LANGUAGE=en_US:en \
+	LC_ALL=en_US.UTF-8
+
+SHELL ["/bin/bash", "-exo", "pipefail", "-c"]
+
+# hadolint ignore=DL4001,DL3004,DL3047,DL3027,DL3008,SC1091
+RUN echo 'APT::Get::Assume-Yes "true";' > /etc/apt/apt.conf.d/90forceyes && \
+    echo 'DPkg::Options "--force-confnew";' >> /etc/apt/apt.conf.d/90forceyes && \
+    apt update && apt-get install --no-install-recommends -y \
+            git=1:2.45.2-1ubuntu1 \
+            openssh-server=1:9.7p1-7ubuntu4 \
+            locales=2.40-1ubuntu3 \
+            tzdata=2024a-4ubuntu1 \
+            libcurl4-openssl-dev=8.9.1-2ubuntu2 \
+            apt-transport-https=2.9.8 \
+            lsb-release=12.1-1 \
+            gettext-base=0.22.5-2 \
+            build-essential=12.10ubuntu1 \
+            gcc=4:14.1.0-2ubuntu1 \
+            g++=4:14.1.0-2ubuntu1 \
+            cmake=3.30.3-1 \
+            make=4.3-4.1build2 \
+            curl=8.9.1-2ubuntu2 \
+            tar=1.35+dfsg-3build1 \
+            wget=1.24.5-1ubuntu2 \
+            unzip=6.0-28ubuntu6 \
+            gzip=1.12-1.1ubuntu1 \
+            zip=3.0-14 \
+            bzip2=1.0.8-6 \
+            jq=1.7.1-3build1 \
+            git-lfs=3.5.0-1 \
+            gnupg=2.4.4-2ubuntu18 \
+            gnupg-agent=2.4.4-2ubuntu18 \
+            ca-certificates=20240203 && \
+    install -m 0755 -d /etc/apt/keyrings && \
+    curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc && \
+    chmod a+r /etc/apt/keyrings/docker.asc && \
+    echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu $(. /etc/os-release && echo noble) stable" | tee /etc/apt/sources.list.d/docker.list > /dev/null && \
+    apt-get update && \
+    apt-get install --no-install-recommends -y \
+            docker-ce=${DOCKER_VERSION} \
+            docker-ce-cli=${DOCKER_VERSION} \
+            containerd.io=1.7.21-1 \
+            docker-buildx-plugin=${DOCKER_BUILDX_VERSION} \
+            docker-compose-plugin=${DOCKER_COMPOSE_VERSION} && \
+    curl -L https://cache.agilebits.com/dist/1P/op2/pkg/v${ONEPASSWORD_VERSION}/op_linux_amd64_v${ONEPASSWORD_VERSION}.zip -o op.zip && \
+    unzip -o op.zip && mv op /usr/local/bin/op && \
+    rm op.zip && rm op.sig && \
+    curl -SLO "https://releases.hashicorp.com/vault/${VAULT_VERSION}/vault_${VAULT_VERSION}_linux_amd64.zip" > "vault_${VAULT_VERSION}_linux_amd64.zip" && \
+    unzip "vault_${VAULT_VERSION}_linux_amd64.zip" -d /usr/local/bin && \
+    rm "vault_${VAULT_VERSION}_linux_amd64.zip" && \
+    curl -L https://github.com/tellerops/teller/releases/download/v${TELLER_VERSION}/teller_${TELLER_VERSION}_Linux_x86_64.tar.gz --output teller_${TELLER_VERSION}_Linux_x86_64.tar.gz && \
+    tar -xzf teller_${TELLER_VERSION}_Linux_x86_64.tar.gz && \
+    mv teller /usr/local/bin/teller && \
+    rm teller_${TELLER_VERSION}_Linux_x86_64.tar.gz && \
+    curl -L -o buildevents https://github.com/honeycombio/buildevents/releases/download/v${BUILDEVENTS_VERSION}/buildevents-linux-amd64 && \
+    chmod +x buildevents && \
+    mv buildevents /usr/local/bin/buildevents && \
+    sed -i 's/^# *\(en_US.UTF-8\)/\1/' /etc/locale.gen && locale-gen && \
+    mkdir /root/.gnupg && \
+    bash -c "echo 'allow-loopback-pinentry' > /root/.gnupg/gpg-agent.conf" && \
+    bash -c "echo 'pinentry-mode loopback' > /root/.gnupg/gpg.conf" && \
+    chmod 700 /root/.gnupg && chmod 600 /root/.gnupg/* && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*

@@ -12,8 +12,8 @@ on:
 
 jobs:
 
-  publish:
-    name: publish image
+  alpine-publish:
+    name: publish alpine image
     uses: ThoughtWorks-DPS/gha-tools-action/.github/workflows/publish-container.yaml@main
     secrets:
       OP_SERVICE_ACCOUNT_TOKEN: ${{ secrets.OP_SERVICE_ACCOUNT_TOKEN }}
@@ -22,5 +22,19 @@ jobs:
       sign-image: true
       sbom: true
       release-notes: true
-      release-message: New release ThoughtWorks-DPS/gha-container-base-image
+      release-message: New release Alpine ThoughtWorks-DPS/gha-container-base-image
+      before-publish: true
+
+  ubuntu-publish:
+    name: publish ubuntu image
+    uses: ThoughtWorks-DPS/gha-tools-action/.github/workflows/publish-container.yaml@main
+    secrets:
+      OP_SERVICE_ACCOUNT_TOKEN: ${{ secrets.OP_SERVICE_ACCOUNT_TOKEN }}
+    with:
+      image: twdps/gha-container-base-image
+      tag-annotation: ubuntu-
+      sign-image: true
+      sbom: true
+      release-notes: true
+      release-message: New release Ubuntu ThoughtWorks-DPS/gha-container-base-image
       before-publish: true

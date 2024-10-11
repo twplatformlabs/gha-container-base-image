@@ -12,8 +12,8 @@ on:
 
 jobs:
 
-  dev-release:
-    name: development build and release
+  alpine-dev-release:
+    name: development build and release of alpine image
     uses: ThoughtWorks-DPS/gha-tools-action/.github/workflows/job-container-dev-release.yaml@main
     secrets:
       OP_SERVICE_ACCOUNT_TOKEN: ${{ secrets.OP_SERVICE_ACCOUNT_TOKEN }}
@@ -28,3 +28,21 @@ jobs:
       bats-run-container-name: gha-container-base-image
       bats-entry-point: /bin/ash
       bats-test-path: test/gha-container-base-image.bats
+
+  ubuntu-dev-release:
+    name: development build and release of ubuntu image
+    uses: ThoughtWorks-DPS/gha-tools-action/.github/workflows/job-container-dev-release.yaml@main
+    secrets:
+      OP_SERVICE_ACCOUNT_TOKEN: ${{ secrets.OP_SERVICE_ACCOUNT_TOKEN }}
+    with:
+      image: twdps/gha-container-base-image
+      tag-annotation: ubuntu-
+      opencontainer-labels: true
+      before-static-analysis: true
+      snyk-scan: true
+      snyk-severity-threshold: medium
+      snyk-organization: twdps
+      bats-test: true
+      bats-run-container-name: gha-container-base-image
+      bats-entry-point: /bin/ash
+      bats-test-path: test/gha-container-base-image-ubuntu.bats
