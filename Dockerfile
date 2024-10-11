@@ -41,9 +41,9 @@ RUN apk add --no-cache \
         g++==13.2.1_git20240309-r0 \
         cmake==3.29.3-r0 \
         make==4.4.1-r2 \
-        curl==8.5.0-r0 \
-        libcurl==8.5.0-r0 \
-        curl-dev==8.5.0-r0 \
+        curl==8.10.1-r0 \
+        libcurl==8.10.1-r0 \
+        curl-dev==8.10.1-r0 \
         openssl-dev==3.1.5-r0 \
         wget==1.21.4-r0 \
         unzip==6.0-r14 \
