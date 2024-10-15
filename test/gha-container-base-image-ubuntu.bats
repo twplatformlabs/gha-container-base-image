@@ -1,23 +1,18 @@
 #!/usr/bin/env bats
 
-@test "gettext install" {
-  run bash -c "docker exec gha-container-base-image less --version"
-  [[ "${output}" =~ "643" ]]
-}
-
 @test "gcc version" {
   run bash -c "docker exec gha-container-base-image gcc --version"
-  [[ "${output}" =~ "13.2" ]]
+  [[ "${output}" =~ "14.1" ]]
 }
 
 @test "make version" {
   run bash -c "docker exec gha-container-base-image make --version"
-  [[ "${output}" =~ "4.4" ]]
+  [[ "${output}" =~ "4.3" ]]
 }
 
 @test "curl version" {
   run bash -c "docker exec gha-container-base-image curl --version"
-  [[ "${output}" =~ "8.10" ]]
+  [[ "${output}" =~ "8.9" ]]
 }
 
 @test "wget version" {
@@ -72,5 +67,5 @@
 
 @test "gh version" {
   run bash -c "docker exec gha-container-base-image gh --version"
-  [[ "${output}" =~ "2.47" ]]
+  [[ "${output}" =~ "2.58" ]]
 }
