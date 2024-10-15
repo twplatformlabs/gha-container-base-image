@@ -45,5 +45,5 @@ jobs:
       snyk-organization: twdps
       bats-test: true
       bats-run-container-name: gha-container-base-image
-      bats-entry-point: /bin/ash
+      bats-entry-point: /bin/bash
       bats-test-path: test/gha-container-base-image-ubuntu.bats
