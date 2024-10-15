@@ -86,4 +86,17 @@ ignore:
     - "*":
       reason: Denial of Service (DoS)
       expires: 2024-06-01T14:26:34.404Z
+  SNYK-UBUNTU2410-WGET-8200904:
+    - "*":
+      reason: Open Redirect
+      expires: 2024-06-01T14:26:34.404Z
+  SNYK-UBUNTU2410-LIBGCRYPT20-8192486:
+    - "*":
+      reason: Information Exposure
+      expires: 2024-06-01T14:26:34.404Z
+  SNYK-UBUNTU2410-KRB5-8192081:
+    - "*":
+      reason: CVE-2024-26462
+      expires: 2024-06-01T14:26:34.404Z
+
 patch: {}
