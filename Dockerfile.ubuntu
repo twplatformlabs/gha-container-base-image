@@ -87,4 +87,5 @@ RUN echo 'APT::Get::Assume-Yes "true";' > /etc/apt/apt.conf.d/90forceyes && \
     bash -c "echo 'pinentry-mode loopback' > /root/.gnupg/gpg.conf" && \
     chmod 700 /root/.gnupg && chmod 600 /root/.gnupg/* && \
     apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
+    rm -rf /var/lib/apt/lists/* && \
+    docker --version

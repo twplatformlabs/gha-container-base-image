@@ -35,6 +35,7 @@ jobs:
     secrets:
       OP_SERVICE_ACCOUNT_TOKEN: ${{ secrets.OP_SERVICE_ACCOUNT_TOKEN }}
     with:
+      dockerfile: Dockerfile.ubuntu
       image: twdps/gha-container-base-image
       tag-annotation: ubuntu-
       opencontainer-labels: true
