@@ -67,5 +67,5 @@
 
 @test "gh version" {
   run bash -c "docker exec gha-container-base-image gh --version"
-  [[ "${output}" =~ "2.58" ]]
+  [[ "${output}" =~ "2.59" ]]
 }
