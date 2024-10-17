@@ -41,5 +41,4 @@ download sbom:
 ```
 oras pull docker.io/twdps/gha-container-base-image:0.1.0:sha256-9d8e8eef60900fcf207e3b258b4ce13b4cdb1765f0f7ca3022fd685cd53b8a14.spdx
 ```
-
 Review `.snyk` for current vulnerability status.  
