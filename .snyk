@@ -98,5 +98,12 @@ ignore:
     - "*":
       reason: CVE-2024-26462
       expires: 2024-06-01T14:26:34.404Z
-
+  SNYK-UBUNTU2204-LIBGCRYPT20-6411451:
+    - "*":
+      reason: Information Exposure
+      expires: 2024-06-01T14:26:34.404Z
+  SNYK-UBUNTU2204-KRB5-6281073:
+    - "*":
+      reason: CVE-2024-26462
+      expires: 2024-06-01T14:26:34.404Z
 patch: {}
