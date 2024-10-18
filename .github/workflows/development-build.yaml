@@ -29,15 +29,15 @@ jobs:
       bats-entry-point: /bin/ash
       bats-test-path: test/gha-container-base-image.bats
 
-  ubuntu-dev-release:
-    name: development build and release of ubuntu image
+  ubuntu-22-dev-release:
+    name: development build and release of ubuntu.2204 image
     uses: ThoughtWorks-DPS/gha-tools-action/.github/workflows/job-container-dev-release.yaml@main
     secrets:
       OP_SERVICE_ACCOUNT_TOKEN: ${{ secrets.OP_SERVICE_ACCOUNT_TOKEN }}
     with:
-      dockerfile: Dockerfile.ubuntu
+      dockerfile: Dockerfile.ubuntu.22
       image: twdps/gha-container-base-image
-      tag-annotation: ubuntu-
+      tag-annotation: ubuntu-22.
       opencontainer-labels: true
       before-static-analysis: true
       snyk-scan: true
@@ -46,4 +46,23 @@ jobs:
       bats-test: true
       bats-run-container-name: gha-container-base-image
       bats-entry-point: /bin/bash
-      bats-test-path: test/gha-container-base-image-ubuntu.bats
+      bats-test-path: test/gha-container-base-image-ubuntu-22.bats
+
+  ubuntu-24-dev-release:
+    name: development build and release of ubuntu.2404 image
+    uses: ThoughtWorks-DPS/gha-tools-action/.github/workflows/job-container-dev-release.yaml@main
+    secrets:
+      OP_SERVICE_ACCOUNT_TOKEN: ${{ secrets.OP_SERVICE_ACCOUNT_TOKEN }}
+    with:
+      dockerfile: Dockerfile.ubuntu.24
+      image: twdps/gha-container-base-image
+      tag-annotation: ubuntu-24.
+      opencontainer-labels: true
+      before-static-analysis: true
+      snyk-scan: true
+      snyk-severity-threshold: medium
+      snyk-organization: twdps
+      bats-test: true
+      bats-run-container-name: gha-container-base-image
+      bats-entry-point: /bin/bash
+      bats-test-path: test/gha-container-base-image-ubuntu-24.bats

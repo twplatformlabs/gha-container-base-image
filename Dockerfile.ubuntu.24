@@ -1,4 +1,4 @@
-FROM ubuntu:oracular-20240918
+FROM ubuntu:24.04
 
 LABEL org.opencontainers.image.title="gha-container-base-image" \
       org.opencontainers.image.description="Ubuntu-based github actions job container image" \
@@ -12,64 +12,63 @@ LABEL org.opencontainers.image.title="gha-container-base-image" \
       org.opencontainers.image.version="VERSION"
 
 ENV DOCKER_VERSION=5:27.3.1-1~ubuntu.24.04~noble
-ENV DOCKER_BUILDX_VERSION=0.16.2-1~ubuntu.24.04~noble
-ENV DOCKER_COMPOSE_VERSION=2.29.2-1~ubuntu.24.04~noble
+ENV DOCKER_BUILDX_VERSION=0.17.1-1~ubuntu.24.04~noble
+ENV DOCKER_COMPOSE_VERSION=2.29.7-1~ubuntu.24.04~noble
+ENV CONTAINERD_VERSION=1.7.22-1
 ENV ONEPASSWORD_VERSION=2.30.0
 ENV VAULT_VERSION=1.18.0
 ENV TELLER_VERSION=1.5.6
 ENV BUILDEVENTS_VERSION=0.16.0
 ENV DEBIAN_FRONTEND=noninteractive
-# ENV TELLER_VERSION=2.0.7
 
 ENV PATH=/home/circleci/bin:/home/circleci/.local/bin:$PATH \
-	LANG=en_US.UTF-8 \
-	LANGUAGE=en_US:en \
-	LC_ALL=en_US.UTF-8
+    LANG=en_US.UTF-8 \
+    LANGUAGE=en_US:en \
+    LC_ALL=en_US.UTF-8
 
 SHELL ["/bin/bash", "-exo", "pipefail", "-c"]
 
 # hadolint ignore=DL4001,DL3004,DL3047,DL3027,DL3008,SC1091
 RUN echo 'APT::Get::Assume-Yes "true";' > /etc/apt/apt.conf.d/90forceyes && \
-    echo 'DPkg::Options "--force-confnew";' >> /etc/apt/apt.conf.d/90forceyes && \
-    apt update && apt-get install --no-install-recommends -y \
-            git=1:2.45.2-1ubuntu1 \
-            openssh-server=1:9.7p1-7ubuntu4 \
-            locales=2.40-1ubuntu3 \
-            tzdata=2024a-4ubuntu1 \
-            libcurl4-openssl-dev=8.9.1-2ubuntu2 \
-            apt-transport-https=2.9.8 \
-            lsb-release=12.1-1 \
-            gettext-base=0.22.5-2 \
+    echo 'DPkg::Options "--force-confnew";' >> /etc/apt/apt.conf.d/90forceyes && apt update && \
+    apt-get install --no-install-recommends -y \
+            ca-certificates=20240203 \
+            locales=2.39-0ubuntu8.3 \
             build-essential=12.10ubuntu1 \
-            gcc=4:14.1.0-2ubuntu1 \
-            g++=4:14.1.0-2ubuntu1 \
-            cmake=3.30.3-1 \
+            software-properties-common=0.99.48 \
+            apt-transport-https=2.7.14build2 \
+            tzdata=2024a-3ubuntu1.1 \
+            lsb-release=12.0-2 \
+            gettext-base=0.21-14ubuntu2 \
+            gcc=4:13.2.0-7ubuntu1 \
+            g++=4:13.2.0-7ubuntu1 \
+            cmake=3.28.3-1build7 \
             make=4.3-4.1build2 \
-            curl=8.9.1-2ubuntu2 \
+            git=1:2.43.0-1ubuntu7.1 \
+            git-lfs=3.4.1-1ubuntu0.1 \
+            curl=8.5.0-2ubuntu10.4 \
+            libcurl4-openssl-dev=8.5.0-2ubuntu10.4 \
             tar=1.35+dfsg-3build1 \
-            wget=1.24.5-1ubuntu2 \
-            unzip=6.0-28ubuntu6 \
-            gzip=1.12-1.1ubuntu1 \
-            zip=3.0-14 \
-            bzip2=1.0.8-6 \
+            wget=1.21.4-1ubuntu4.1 \
+            unzip=6.0-28ubuntu4.1 \
+            gzip=1.12-1ubuntu3 \
+            zip=3.0-13build1 \
+            bzip2=1.0.8-5.1build0.1 \
             jq=1.7.1-3build1 \
-            git-lfs=3.5.0-1 \
-            gnupg=2.4.4-2ubuntu18 \
-            gnupg-agent=2.4.4-2ubuntu18 \
-            ca-certificates=20240203 && \
+            gnupg=2.4.4-2ubuntu17 \
+            gnupg-agent=2.4.4-2ubuntu17 && \
+    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg && \
+    echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | tee /etc/apt/sources.list.d/docker.list > /dev/null && \
     mkdir -p -m 755 /etc/apt/keyrings && \
     wget -qO- https://cli.github.com/packages/githubcli-archive-keyring.gpg | tee /etc/apt/keyrings/githubcli-archive-keyring.gpg > /dev/null && \
     chmod go+r /etc/apt/keyrings/githubcli-archive-keyring.gpg && \
     echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | tee /etc/apt/sources.list.d/github-cli.list > /dev/null && \
-    curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc && \
-    chmod a+r /etc/apt/keyrings/docker.asc && \
-    echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu $(. /etc/os-release && echo noble) stable" | tee /etc/apt/sources.list.d/docker.list > /dev/null && \
     apt-get update && \
     apt-get install --no-install-recommends -y \
             gh=2.59.0 \
             docker-ce=${DOCKER_VERSION} \
             docker-ce-cli=${DOCKER_VERSION} \
-            containerd.io=1.7.21-1 \
+            containerd.io=${CONTAINERD_VERSION} \
             docker-buildx-plugin=${DOCKER_BUILDX_VERSION} \
             docker-compose-plugin=${DOCKER_COMPOSE_VERSION} && \
     curl -L https://cache.agilebits.com/dist/1P/op2/pkg/v${ONEPASSWORD_VERSION}/op_linux_amd64_v${ONEPASSWORD_VERSION}.zip -o op.zip && \
@@ -90,6 +89,4 @@ RUN echo 'APT::Get::Assume-Yes "true";' > /etc/apt/apt.conf.d/90forceyes && \
     bash -c "echo 'allow-loopback-pinentry' > /root/.gnupg/gpg-agent.conf" && \
     bash -c "echo 'pinentry-mode loopback' > /root/.gnupg/gpg.conf" && \
     chmod 700 /root/.gnupg && chmod 600 /root/.gnupg/* && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/* && \
-    docker --version
+    apt-get clean && rm -rf /var/lib/apt/lists/*
