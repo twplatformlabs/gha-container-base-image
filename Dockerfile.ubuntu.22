@@ -28,7 +28,7 @@ ENV PATH=/home/circleci/bin:/home/circleci/.local/bin:$PATH \
 
 SHELL ["/bin/bash", "-exo", "pipefail", "-c"]
 
-# hadolint ignore=DL4001,DL3004,DL3047,DL3027,DL3008,SC1091
+# hadolint ignore=DL4001,DL3004,DL3047,DL3027,DL3008,SC1091,SC2174
 RUN echo 'APT::Get::Assume-Yes "true";' > /etc/apt/apt.conf.d/90forceyes && \
     echo 'DPkg::Options "--force-confnew";' >> /etc/apt/apt.conf.d/90forceyes && apt update && \
     apt-get install --no-install-recommends -y \
