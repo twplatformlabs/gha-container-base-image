@@ -42,3 +42,24 @@ download sbom:
 oras pull docker.io/twdps/gha-container-base-image:0.1.0:sha256-9d8e8eef60900fcf207e3b258b4ce13b4cdb1765f0f7ca3022fd685cd53b8a14.spdx
 ```
 Review `.snyk` for current vulnerability status.  
+
+## release versions
+
+There are three base-image release versions maintained:  
+- Alpine 3.x (current distribution)
+- Ubuntu 22.04
+- Ubuntun 24.04
+
+Builds happen on an automatic monthly release cycle, with occasional interim builds. New releases will have two version tags. For example, the October 2024 release includes the following tags:  
+
+- 3.20-2024.10.01, 3.20    (alpine)
+- 22.04-2024.10.01, 22.04  (ubuntu)
+- 24.04-2024.10.01, 24.04  (ubuntu)
+
+The November 2024 release would then include:  
+
+- 3.20-2024.11.01, 3.20
+- 22.04-2024.11.01, 22.04
+- 24.04-2024.11.01, 24.04
+
+Use the shorter, FROM image distribution version if you want to always pull the current release for the distribution. The longer release tag includes year.month.number information and this tag will remain tied to the underlying commit. This provides users the option of either using the current distribution release with related libraries and packages, or a pinned version that will remain fixed until referencing a new pinned release.  

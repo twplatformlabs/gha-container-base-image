@@ -39,3 +39,10 @@ runs:
       with:
         op-value: empc-lab/svc-cosign-private-key/notesPlain
         out-file: cosign.key
+
+    - name: generate release notess
+      shell: bash
+      run: |
+        cat tpl/release-notes.tpl > release-notes.md
+        cat ${{ inputs.instance }} >> release-notes.md
+        echo "</details>" >> release-notes.md

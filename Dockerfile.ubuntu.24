@@ -11,80 +11,86 @@ LABEL org.opencontainers.image.title="gha-container-base-image" \
       org.opencontainers.image.created="CREATED" \
       org.opencontainers.image.version="VERSION"
 
-ENV DOCKER_VERSION=5:27.3.1-1~ubuntu.24.04~noble
-ENV DOCKER_BUILDX_VERSION=0.17.1-1~ubuntu.24.04~noble
-ENV DOCKER_COMPOSE_VERSION=2.29.7-1~ubuntu.24.04~noble
-ENV CONTAINERD_VERSION=1.7.22-1
-ENV ONEPASSWORD_VERSION=2.30.0
-ENV VAULT_VERSION=1.18.0
-ENV TELLER_VERSION=1.5.6
-ENV BUILDEVENTS_VERSION=0.16.0
-ENV DEBIAN_FRONTEND=noninteractive
+SHELL ["/bin/bash", "-exo", "pipefail", "-c"]
 
-ENV PATH=/home/circleci/bin:/home/circleci/.local/bin:$PATH \
+ENV TELLER_VERSION=1.5.6
+ENV DEBIAN_FRONTEND=noninteractive \
+    TERM=dumb \
+    PAGER=cat \
     LANG=en_US.UTF-8 \
     LANGUAGE=en_US:en \
     LC_ALL=en_US.UTF-8
 
-SHELL ["/bin/bash", "-exo", "pipefail", "-c"]
-
-# hadolint ignore=DL4001,DL3004,DL3047,DL3027,DL3008,SC1091,SC2174
-RUN echo 'APT::Get::Assume-Yes "true";' > /etc/apt/apt.conf.d/90forceyes && \
-    echo 'DPkg::Options "--force-confnew";' >> /etc/apt/apt.conf.d/90forceyes && apt update && \
+RUN echo 'APT::Get::Assume-Yes "true";' > /etc/apt/apt.conf.d/90circleci && \
+    echo 'DPkg::Options "--force-confnew";' >> /etc/apt/apt.conf.d/90circleci && apt-get update && \
+    apt-get install -y \
+            curl \
+            locales && \
+    locale-gen en_US.UTF-8 && \
+    rm -rf /var/lib/apt/lists/* && \
+    \
+    dockerizeArch=x86_64 && \
+    if uname -p | grep "arm64"; then \
+      dockerizeArch=arm64; \
+    fi && \
+    curl -sSL --fail --retry 3 --output /usr/local/bin/dockerize "https://github.com/powerman/dockerize/releases/download/v0.8.0/dockerize-linux-${dockerizeArch}" && \
+    chmod +x /usr/local/bin/dockerize && apt-get update && \
     apt-get install --no-install-recommends -y \
-            ca-certificates=20240203 \
-            locales=2.39-0ubuntu8.3 \
-            build-essential=12.10ubuntu1 \
-            software-properties-common=0.99.48 \
-            apt-transport-https=2.7.14build2 \
-            tzdata=2024a-3ubuntu1.1 \
-            lsb-release=12.0-2 \
-            gettext-base=0.21-14ubuntu2 \
-            gcc=4:13.2.0-7ubuntu1 \
-            g++=4:13.2.0-7ubuntu1 \
-            cmake=3.28.3-1build7 \
-            make=4.3-4.1build2 \
-            git=1:2.43.0-1ubuntu7.1 \
-            git-lfs=3.4.1-1ubuntu0.1 \
-            curl=8.5.0-2ubuntu10.4 \
-            libcurl4-openssl-dev=8.5.0-2ubuntu10.4 \
-            tar=1.35+dfsg-3build1 \
-            wget=1.21.4-1ubuntu4.1 \
-            unzip=6.0-28ubuntu4.1 \
-            gzip=1.12-1ubuntu3 \
-            zip=3.0-13build1 \
-            bzip2=1.0.8-5.1build0.1 \
-            jq=1.7.1-3build1 \
-            gnupg=2.4.4-2ubuntu17 \
-            gnupg-agent=2.4.4-2ubuntu17 && \
+            autoconf \
+            build-essential \
+            ca-certificates \
+            gettext-base \
+            apt-transport-https \
+            lsb-release \
+            libcurl4-openssl-dev \
+            libssl-dev \
+            software-properties-common \
+            gcc \
+            g++ \
+            cmake \
+            make \
+            lsof \
+            pkg-config \
+            retry \
+            file \
+            gnupg \
+            gnupg-agent \
+            jq \
+            tar \
+            tzdata \
+            unzip \
+            wget \
+            gzip \
+            bzip2 \
+            zip && \
+    add-apt-repository ppa:git-core/ppa && apt-get install -y git && \
+    curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | bash && apt-get install -y git-lfs && \
     curl -fsSL https://download.docker.com/linux/ubuntu/gpg | gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg && \
     echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | tee /etc/apt/sources.list.d/docker.list > /dev/null && \
     mkdir -p -m 755 /etc/apt/keyrings && \
     wget -qO- https://cli.github.com/packages/githubcli-archive-keyring.gpg | tee /etc/apt/keyrings/githubcli-archive-keyring.gpg > /dev/null && \
     chmod go+r /etc/apt/keyrings/githubcli-archive-keyring.gpg && \
     echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | tee /etc/apt/sources.list.d/github-cli.list > /dev/null && \
-    apt-get update && \
+    wget -O- https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg && \
+    echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | tee /etc/apt/sources.list.d/hashicorp.list && apt-get update && \
     apt-get install --no-install-recommends -y \
-            gh=2.59.0 \
-            docker-ce=${DOCKER_VERSION} \
-            docker-ce-cli=${DOCKER_VERSION} \
-            containerd.io=${CONTAINERD_VERSION} \
-            docker-buildx-plugin=${DOCKER_BUILDX_VERSION} \
-            docker-compose-plugin=${DOCKER_COMPOSE_VERSION} && \
+            gh \
+            vault \
+            docker-ce \
+            docker-ce-cli \
+            containerd.io \
+            docker-buildx-plugin && \
+    ONEPASSWORD_VERSION="v$(curl https://app-updates.agilebits.com/check/1/0/CLI2/en/2.0.0/N -s | grep -Eo '[0-9]+\.[0-9]+\.[0-9]+')" && \
     curl -L https://cache.agilebits.com/dist/1P/op2/pkg/v${ONEPASSWORD_VERSION}/op_linux_amd64_v${ONEPASSWORD_VERSION}.zip -o op.zip && \
     unzip -o op.zip && mv op /usr/local/bin/op && \
     rm op.zip && rm op.sig && \
-    curl -SLO "https://releases.hashicorp.com/vault/${VAULT_VERSION}/vault_${VAULT_VERSION}_linux_amd64.zip" > "vault_${VAULT_VERSION}_linux_amd64.zip" && \
-    unzip "vault_${VAULT_VERSION}_linux_amd64.zip" -d /usr/local/bin && \
-    rm "vault_${VAULT_VERSION}_linux_amd64.zip" && \
     curl -L https://github.com/tellerops/teller/releases/download/v${TELLER_VERSION}/teller_${TELLER_VERSION}_Linux_x86_64.tar.gz --output teller_${TELLER_VERSION}_Linux_x86_64.tar.gz && \
     tar -xzf teller_${TELLER_VERSION}_Linux_x86_64.tar.gz && \
     mv teller /usr/local/bin/teller && \
     rm teller_${TELLER_VERSION}_Linux_x86_64.tar.gz && \
-    curl -L -o buildevents https://github.com/honeycombio/buildevents/releases/download/v${BUILDEVENTS_VERSION}/buildevents-linux-amd64 && \
+    curl -L -o buildevents https://github.com/honeycombio/buildevents/releases/latest/download/buildevents-linux-amd64 && \
     chmod +x buildevents && \
     mv buildevents /usr/local/bin/buildevents && \
-    sed -i 's/^# *\(en_US.UTF-8\)/\1/' /etc/locale.gen && locale-gen && \
     mkdir /root/.gnupg && \
     bash -c "echo 'allow-loopback-pinentry' > /root/.gnupg/gpg-agent.conf" && \
     bash -c "echo 'pinentry-mode loopback' > /root/.gnupg/gpg.conf" && \

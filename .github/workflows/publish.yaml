@@ -12,18 +12,18 @@ on:
 
 jobs:
 
-  alpine-publish:
-    name: publish alpine image
-    uses: ThoughtWorks-DPS/gha-tools-action/.github/workflows/publish-container.yaml@main
-    secrets:
-      OP_SERVICE_ACCOUNT_TOKEN: ${{ secrets.OP_SERVICE_ACCOUNT_TOKEN }}
-    with:
-      image: twdps/gha-container-base-image
-      sign-image: true
-      sbom: true
-      release-notes: true
-      release-message: New release Alpine ThoughtWorks-DPS/gha-container-base-image
-      before-publish: true
+  # alpine-publish:
+  #   name: publish alpine image
+  #   uses: ThoughtWorks-DPS/gha-tools-action/.github/workflows/publish-container.yaml@main
+  #   secrets:
+  #     OP_SERVICE_ACCOUNT_TOKEN: ${{ secrets.OP_SERVICE_ACCOUNT_TOKEN }}
+  #   with:
+  #     image: twdps/gha-container-base-image
+  #     sign-image: true
+  #     sbom: true
+  #     release-notes: true
+  #     release-message: New release Alpine ThoughtWorks-DPS/gha-container-base-image
+  #     before-publish: true
 
   ubuntu-22-publish:
     name: publish ubuntu.22 image
@@ -32,23 +32,25 @@ jobs:
       OP_SERVICE_ACCOUNT_TOKEN: ${{ secrets.OP_SERVICE_ACCOUNT_TOKEN }}
     with:
       image: twdps/gha-container-base-image
-      tag-annotation: ubuntu-22.
+      tag-annotation: 22.04-
+      release-tag: 22.04
       sign-image: true
       sbom: true
       release-notes: true
-      release-message: New release Ubuntu.2204 ThoughtWorks-DPS/gha-container-base-image
+      release-body-path: release-notes.md
+      release-message: New release Ubuntu 22.04 ThoughtWorks-DPS/gha-container-base-image
       before-publish: true
 
-  ubuntu-24-publish:
-    name: publish ubuntu.24 image
-    uses: ThoughtWorks-DPS/gha-tools-action/.github/workflows/publish-container.yaml@main
-    secrets:
-      OP_SERVICE_ACCOUNT_TOKEN: ${{ secrets.OP_SERVICE_ACCOUNT_TOKEN }}
-    with:
-      image: twdps/gha-container-base-image
-      tag-annotation: ubuntu-24.
-      sign-image: true
-      sbom: true
-      release-notes: true
-      release-message: New release Ubuntu.2404 ThoughtWorks-DPS/gha-container-base-image
-      before-publish: true
+  # ubuntu-24-publish:
+  #   name: publish ubuntu.24 image
+  #   uses: ThoughtWorks-DPS/gha-tools-action/.github/workflows/publish-container.yaml@main
+  #   secrets:
+  #     OP_SERVICE_ACCOUNT_TOKEN: ${{ secrets.OP_SERVICE_ACCOUNT_TOKEN }}
+  #   with:
+  #     image: twdps/gha-container-base-image
+  #     tag-annotation: ubuntu-24.
+  #     sign-image: true
+  #     sbom: true
+  #     release-notes: true
+  #     release-message: New release Ubuntu.2404 ThoughtWorks-DPS/gha-container-base-image
+  #     before-publish: true
