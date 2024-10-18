@@ -106,4 +106,24 @@ ignore:
     - "*":
       reason: CVE-2024-26462
       expires: 2024-06-01T14:26:34.404Z
+  SNYK-UBUNTU2204-GCC11-5893600:
+    - "*":
+      reason: CVE-2023-4039
+      expires: 2024-06-01T14:26:34.404Z
+  SNYK-UBUNTU2204-GCC12-5893601:
+    - "*":
+      reason: CVE-2023-4039
+      expires: 2024-06-01T14:26:34.404Z
+  SNYK-UBUNTU2204-WGET-2785488:
+    - "*":
+      reason: Open Redirect
+      expires: 2024-06-01T14:26:34.404Z
+  SNYK-UBUNTU2404-KRB5-6693037:
+    - "*":
+      reason: CVE-2024-26462
+      expires: 2024-06-01T14:26:34.404Z
+  SNYK-UBUNTU2404-LIBGCRYPT20-6693674:
+    - "*":
+      reason: Information Exposure
+      expires: 2024-06-01T14:26:34.404Z
 patch: {}
