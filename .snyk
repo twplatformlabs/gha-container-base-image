@@ -5,125 +5,129 @@ ignore:
   SNYK-GOLANG-GOOGLEGOLANGORGPROTOBUFENCODINGPROTOJSON-6393703:
     - "*":
       reason: Infinite loop
-      expires: 2024-06-01T14:26:34.404Z
+      expires: 2024-12-01T14:26:34.404Z
   SNYK-GOLANG-GOOGLEGOLANGORGPROTOBUFINTERNALENCODINGJSON-6393704:
     - "*":
       reason: Infinite loop
-      expires: 2024-06-01T14:26:34.404Z
+      expires: 2024-12-01T14:26:34.404Z
   SNYK-GOLANG-GOLANGORGXCRYPTOSSH-6130669:
     - "*":
       reason: Authentication Bypass by Capture-replay
-      expires: 2024-06-01T14:26:34.404Z
+      expires: 2024-12-01T14:26:34.404Z
   SNYK-GOLANG-GOLANGORGXCRYPTOSSH-2429769:
     - "*":
       reason: Denial of Service (DoS)
-      expires: 2024-06-01T14:26:34.404Z
+      expires: 2024-12-01T14:26:34.404Z
   SNYK-GOLANG-GOLANGORGXNETHTTP2-5958903:
     - "*":
       reason: Allocation of Resources Without Limits or Throttling
-      expires: 2024-06-01T14:26:34.404Z
+      expires: 2024-12-01T14:26:34.404Z
   SNYK-GOLANG-GOLANGORGXNETHTTP2-3160322:
     - "*":
       reason: Denial of Service (DoS)
-      expires: 2024-06-01T14:26:34.404Z
+      expires: 2024-12-01T14:26:34.404Z
   SNYK-GOLANG-GOLANGORGXSYSUNIX-3310442:
     - "*":
       reason: Incorrect Privilege Assignment
-      expires: 2024-06-01T14:26:34.404Z
+      expires: 2024-12-01T14:26:34.404Z
   SNYK-GOLANG-GITHUBCOMDVSEKHVALNOVJOSE2GO-6137739:
     - "*":
       reason: Uncontrolled Resource Consumption ('Resource Exhaustion')
-      expires: 2024-06-01T14:26:34.404Z
+      expires: 2024-12-01T14:26:34.404Z
   SNYK-GOLANG-GOLANGORGXNETHTTP2-6531285:
     - "*":
       reason: Allocation of Resources Without Limits or Throttling
-      expires: 2024-06-01T14:26:34.404Z
+      expires: 2024-12-01T14:26:34.404Z
   SNYK-GOLANG-GOPKGINYAMLV3-2841557:
     - "*":
       reason: Denial of Service (DoS)
-      expires: 2024-06-01T14:26:34.404Z
+      expires: 2024-12-01T14:26:34.404Z
   SNYK-GOLANG-GOPKGINYAMLV3-2952714:
     - "*":
       reason: NULL Pointer Dereference
-      expires: 2024-06-01T14:26:34.404Z
+      expires: 2024-12-01T14:26:34.404Z
   SNYK-GOLANG-GOOGLEGOLANGORGGRPC-5953328:
     - "*":
       reason: Denial of Service (DoS)
-      expires: 2024-06-01T14:26:34.404Z
+      expires: 2024-12-01T14:26:34.404Z
   SNYK-GOLANG-GOLANGORGXNETHTTP2HPACK-3358253:
     - "*":
       reason: Denial of Service (DoS)
-      expires: 2024-06-01T14:26:34.404Z
+      expires: 2024-12-01T14:26:34.404Z
   SNYK-GOLANG-GOLANGORGXNETHTTP2-2313688:
     - "*":
       reason: Denial of Service (DoS)
-      expires: 2024-06-01T14:26:34.404Z
+      expires: 2024-12-01T14:26:34.404Z
   SNYK-GOLANG-GOLANGORGXNETHTTP2-3028257:
     - "*":
       reason: Denial of Service
-      expires: 2024-06-01T14:26:34.404Z
+      expires: 2024-12-01T14:26:34.404Z
   SNYK-GOLANG-GOLANGORGXNETHTTP2-3323837:
     - "*":
       reason: Denial of Service (DoS)
-      expires: 2024-06-01T14:26:34.404Z
+      expires: 2024-12-01T14:26:34.404Z
   SNYK-GOLANG-GOLANGORGXNETHTTP2-5953327:
     - "*":
       reason: Denial of Service (DoS)
-      expires: 2024-06-01T14:26:34.404Z
+      expires: 2024-12-01T14:26:34.404Z
   SNYK-GOLANG-GOLANGORGXCRYPTOSSH-3026972:
     - "*":
       reason: Denial of Service (DoS)
-      expires: 2024-06-01T14:26:34.404Z
+      expires: 2024-12-01T14:26:34.404Z
   SNYK-DEBIANUNSTABLE-LIBXML2-6227806:
     - "*":
       reason: Use after free
-      expires: 2024-06-01T14:26:34.404Z
+      expires: 2024-12-01T14:26:34.404Z
   SNYK-GOLANG-GITHUBCOMHASHICORPGORETRYABLEHTTP-7362036:
     - "*":
       reason: Insertion of Sensitive Information into Log File
-      expires: 2024-06-01T14:26:34.404Z
+      expires: 2024-12-01T14:26:34.404Z
   SNYK-GOLANG-GITHUBCOMSIRUPSENLOGRUS-5564391:
     - "*":
       reason: Denial of Service (DoS)
-      expires: 2024-06-01T14:26:34.404Z
+      expires: 2024-12-01T14:26:34.404Z
   SNYK-UBUNTU2410-WGET-8200904:
     - "*":
       reason: Open Redirect
-      expires: 2024-06-01T14:26:34.404Z
+      expires: 2024-12-01T14:26:34.404Z
   SNYK-UBUNTU2410-LIBGCRYPT20-8192486:
     - "*":
       reason: Information Exposure
-      expires: 2024-06-01T14:26:34.404Z
+      expires: 2024-12-01T14:26:34.404Z
   SNYK-UBUNTU2410-KRB5-8192081:
     - "*":
       reason: CVE-2024-26462
-      expires: 2024-06-01T14:26:34.404Z
+      expires: 2024-12-01T14:26:34.404Z
   SNYK-UBUNTU2204-LIBGCRYPT20-6411451:
     - "*":
       reason: Information Exposure
-      expires: 2024-06-01T14:26:34.404Z
+      expires: 2024-12-01T14:26:34.404Z
   SNYK-UBUNTU2204-KRB5-6281073:
     - "*":
       reason: CVE-2024-26462
-      expires: 2024-06-01T14:26:34.404Z
+      expires: 2024-12-01T14:26:34.404Z
   SNYK-UBUNTU2204-GCC11-5893600:
     - "*":
       reason: CVE-2023-4039
-      expires: 2024-06-01T14:26:34.404Z
+      expires: 2024-12-01T14:26:34.404Z
   SNYK-UBUNTU2204-GCC12-5893601:
     - "*":
       reason: CVE-2023-4039
-      expires: 2024-06-01T14:26:34.404Z
+      expires: 2024-12-01T14:26:34.404Z
   SNYK-UBUNTU2204-WGET-2785488:
     - "*":
       reason: Open Redirect
-      expires: 2024-06-01T14:26:34.404Z
+      expires: 2024-12-01T14:26:34.404Z
   SNYK-UBUNTU2404-KRB5-6693037:
     - "*":
       reason: CVE-2024-26462
-      expires: 2024-06-01T14:26:34.404Z
+      expires: 2024-12-01T14:26:34.404Z
   SNYK-UBUNTU2404-LIBGCRYPT20-6693674:
     - "*":
       reason: Information Exposure
-      expires: 2024-06-01T14:26:34.404Z
+      expires: 2024-12-01T14:26:34.404Z
+  SNYK-UBUNTU2404-WGET-6709170:
+    - "*":
+      reason: Open Redirect
+      expires: 2024-12-01T14:26:34.404Z
 patch: {}
