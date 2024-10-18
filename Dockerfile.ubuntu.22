@@ -29,17 +29,7 @@ RUN echo 'APT::Get::Assume-Yes "true";' > /etc/apt/apt.conf.d/90circleci && \
     echo 'DPkg::Options "--force-confnew";' >> /etc/apt/apt.conf.d/90circleci && apt-get update && \
     apt-get install --no-install-recommends -y \
             curl \
-            locales && \
-    locale-gen en_US.UTF-8 && \
-    rm -rf /var/lib/apt/lists/* && \
-    \
-    dockerizeArch=x86_64 && \
-    if uname -p | grep "arm64"; then \
-      dockerizeArch=arm64; \
-    fi && \
-    curl -sSL --fail --retry 3 --output /usr/local/bin/dockerize "https://github.com/powerman/dockerize/releases/download/v0.8.0/dockerize-linux-${dockerizeArch}" && \
-    chmod +x /usr/local/bin/dockerize && apt-get update && \
-    apt-get install --no-install-recommends -y \
+            locales \
             autoconf \
             build-essential \
             ca-certificates \
@@ -67,6 +57,7 @@ RUN echo 'APT::Get::Assume-Yes "true";' > /etc/apt/apt.conf.d/90circleci && \
             gzip \
             bzip2 \
             zip && \
+    locale-gen en_US.UTF-8 && \
     add-apt-repository ppa:git-core/ppa && \
     curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | bash && \
     curl -fsSL https://download.docker.com/linux/ubuntu/gpg | gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg && \
@@ -111,3 +102,14 @@ RUN docker --version && \
     vault --version && \
     teller version && \
     buildevents -v
+#DOCKERIZE_VERSION="$(curl -s https://api.github.com/repos/powerman/dockerize/releases/latest | grep -i /dockerize-$(uname -s)-$(uname -m)\" | cut -d\" -f4)"
+#         curl -sSL --fail --retry 3 --output /usr/local/bin/dockerize "https://github.com/powerman/dockerize/releases/download/v0.8.0/dockerize-linux-${dockerizeArch}" && \
+#     chmod +x /usr/local/bin/dockerize && apt-get update && \
+# dockerizeArch=x86_64 && \
+# if uname -p | grep "arm64"; then \
+#   dockerizeArch=arm64; \
+# fi && \
+
+#curl -sfL $(curl -s https://api.github.com/repos/powerman/dockerize/releases/latest | grep -i /dockerize-$(uname -s)-$(uname -m)\" | cut -d\" -f4) | install /dev/stdin /usr/local/bin/dockerize
+# curl -sSL --retry 3 --output /usr/local/bin/dockerize "https://github.com/powerman/dockerize/releases/download/v0.20.0/dockerize-linux-aarch64" && \
+# chmod +x /usr/local/bin/dockerize && 

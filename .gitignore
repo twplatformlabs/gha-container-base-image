@@ -3,3 +3,4 @@ cosign.key
 cosign.pub
 manifestid
 sbom.spdx
+docker_build.log
