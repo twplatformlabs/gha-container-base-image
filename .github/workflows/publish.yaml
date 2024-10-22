@@ -31,7 +31,8 @@ jobs:
     secrets:
       OP_SERVICE_ACCOUNT_TOKEN: ${{ secrets.OP_SERVICE_ACCOUNT_TOKEN }}
     with:
-      image: twdps/gha-container-base-image
+      organization: twdps
+      image: gha-container-base-image
       tag-annotation: 22.04-
       release-tag: 22.04
       sign-image: true
