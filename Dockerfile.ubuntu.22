@@ -102,6 +102,9 @@ RUN docker --version && \
     vault --version && \
     teller version && \
     buildevents -v
+
+
+    
 #DOCKERIZE_VERSION="$(curl -s https://api.github.com/repos/powerman/dockerize/releases/latest | grep -i /dockerize-$(uname -s)-$(uname -m)\" | cut -d\" -f4)"
 #         curl -sSL --fail --retry 3 --output /usr/local/bin/dockerize "https://github.com/powerman/dockerize/releases/download/v0.8.0/dockerize-linux-${dockerizeArch}" && \
 #     chmod +x /usr/local/bin/dockerize && apt-get update && \

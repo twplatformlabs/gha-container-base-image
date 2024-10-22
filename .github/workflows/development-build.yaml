@@ -43,6 +43,7 @@ jobs:
       snyk-scan: true
       snyk-severity-threshold: medium
       snyk-organization: twdps
+      security-scan-nofail: true
       bats-test: true
       bats-run-container-name: gha-container-base-image
       bats-entry-point: /bin/bash

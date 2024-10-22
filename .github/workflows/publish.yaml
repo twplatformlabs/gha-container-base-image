@@ -39,7 +39,7 @@ jobs:
       release-notes: true
       release-body-path: release-notes.md
       release-message: New release Ubuntu 22.04 ThoughtWorks-DPS/gha-container-base-image
-      before-publish: true
+      before-publish: gha-container-base-image_dev.${GITHUB_SHA:0:7}_docker_build.log
 
   # ubuntu-24-publish:
   #   name: publish ubuntu.24 image
