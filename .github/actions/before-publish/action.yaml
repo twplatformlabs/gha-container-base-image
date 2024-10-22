@@ -43,6 +43,7 @@ runs:
     - name: generate release notess
       shell: bash
       run: |
+        ls -la
         cat tpl/release-notes.tpl > release-notes.md
         cat ${{ inputs.instance }} >> release-notes.md
         echo "</details>" >> release-notes.md
