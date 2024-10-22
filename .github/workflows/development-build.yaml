@@ -36,7 +36,8 @@ jobs:
       OP_SERVICE_ACCOUNT_TOKEN: ${{ secrets.OP_SERVICE_ACCOUNT_TOKEN }}
     with:
       dockerfile: Dockerfile.ubuntu.22
-      image: twdps/gha-container-base-image
+      organization: twdps
+      image: gha-container-base-image
       tag-annotation: 22.04-
       opencontainer-labels: true
       before-static-analysis: true
