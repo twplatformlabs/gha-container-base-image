@@ -52,6 +52,12 @@ ignore:
           Asymmetric Resource Consumption (Amplification) in github.com/golang-jwt/jwt/v4@v4.5.0
           Fixed in v4.5.2 - awaiting dependency update
         expires: 2025-08-22T00:00:00.000Z
+  SNYK-GOLANG-GITHUBCOMHASHICORPCONSULAPI-8602118:
+    - '*':
+        reason: >-
+          Cross-site Scripting (XSS) in github.com/hashicorp/consul/api@v1.8.1
+          Fixed in v1.20.2 - awaiting dependency update
+        expires: 2025-08-22T00:00:00.000Z
   # Medium severity vulnerabilities
   SNYK-GOLANG-GOLANGORGXNETHTML-9572088:
     - '*':
