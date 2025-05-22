@@ -12,22 +12,22 @@ on:
 
 jobs:
 
-  # alpine-publish:
-  #   name: publish alpine image
-  #   uses: ThoughtWorks-DPS/gha-tools-action/.github/workflows/publish-container.yaml@main
-  #   secrets:
-  #     OP_SERVICE_ACCOUNT_TOKEN: ${{ secrets.OP_SERVICE_ACCOUNT_TOKEN }}
-  #   with:
-  #     image: twdps/gha-container-base-image
-  #     sign-image: true
-  #     sbom: true
-  #     release-notes: true
-  #     release-message: New release Alpine ThoughtWorks-DPS/gha-container-base-image
-  #     before-publish: true
+  alpine-publish:
+    name: publish alpine image
+    uses: twplatformlabs/gha-tools-action/.github/workflows/publish-container.yaml@main
+    secrets:
+      OP_SERVICE_ACCOUNT_TOKEN: ${{ secrets.OP_SERVICE_ACCOUNT_TOKEN }}
+    with:
+      image: twdps/gha-container-base-image
+      sign-image: true
+      sbom: true
+      release-notes: true
+      release-message: New release Alpine ThoughtWorks-DPS/gha-container-base-image
+      before-publish: true
 
   ubuntu-22-publish:
     name: publish ubuntu.22 image
-    uses: ThoughtWorks-DPS/gha-tools-action/.github/workflows/publish-container.yaml@main
+    uses: twplatformlabs/gha-tools-action/.github/workflows/publish-container.yaml@main
     secrets:
       OP_SERVICE_ACCOUNT_TOKEN: ${{ secrets.OP_SERVICE_ACCOUNT_TOKEN }}
     with:

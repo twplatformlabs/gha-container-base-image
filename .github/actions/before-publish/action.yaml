@@ -21,23 +21,23 @@ runs:
       with:
         export-env: true
       env:
-        DOCKER_LOGIN: op://empc-lab/svc-dockerhub/username
-        DOCKER_PASSWORD: op://empc-lab/svc-dockerhub/password
-        SNYK_TOKEN: op://empc-lab/svc-snyk/api-token
-        COSIGN_PASSWORD: op://empc-lab/svc-cosign/passphrase
-        GREN_GITHUB_TOKEN: op://empc-lab/svc-github/access-token
-        SLACK_BOT_TOKEN: op://empc-lab/svc-slack/post-bot-token
+        DOCKER_LOGIN: op://platform/svc-dockerhub/username
+        DOCKER_PASSWORD: op://platform/svc-dockerhub/password
+        SNYK_TOKEN: op://platform/svc-snyk/api-token
+        COSIGN_PASSWORD: op://platform/svc-cosign/passphrase
+        GREN_GITHUB_TOKEN: op://platform/svc-github/access-token
+        SLACK_BOT_TOKEN: op://platform/svc-slack/post-bot-token
 
     - name: load cosign public key
       uses: ThoughtWorks-DPS/1password-action/write-to-file@2f0a75fadf187f444c855270f8ae09a5c95747d0     # v0.2.3
       with:
-        op-value: empc-lab/svc-cosign-public-key/notesPlain
+        op-value: platform/svc-cosign-public-key/notesPlain
         out-file: cosign.pub
 
     - name: load cosign key
       uses: ThoughtWorks-DPS/1password-action/write-to-file@2f0a75fadf187f444c855270f8ae09a5c95747d0     # v0.2.3
       with:
-        op-value: empc-lab/svc-cosign-private-key/notesPlain
+        op-value: platform/svc-cosign-private-key/notesPlain
         out-file: cosign.key
 
     - name: generate release notess
