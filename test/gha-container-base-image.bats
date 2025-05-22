@@ -2,7 +2,7 @@
 
 @test "cmake version" {
   run bash -c "docker exec gha-container-base-image cmake --version"
-  [[ "${output}" =~ "3.30" ]]
+  [[ "${output}" =~ "3.31" ]]
 }
 @test "make version" {
   run bash -c "docker exec gha-container-base-image make --version"
@@ -11,7 +11,7 @@
 
 @test "curl version" {
   run bash -c "docker exec gha-container-base-image curl --version"
-  [[ "${output}" =~ "8.11" ]]
+  [[ "${output}" =~ "8.12" ]]
 }
 
 @test "wget version" {
@@ -71,5 +71,5 @@
 
 @test "gh version" {
   run bash -c "docker exec gha-container-base-image gh --version"
-  [[ "${output}" =~ "2.58" ]]
+  [[ "${output}" =~ "2.63" ]]
 }
