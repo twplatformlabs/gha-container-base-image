@@ -18,11 +18,12 @@ jobs:
     secrets:
       OP_SERVICE_ACCOUNT_TOKEN: ${{ secrets.OP_SERVICE_ACCOUNT_TOKEN }}
     with:
-      image: twdps/gha-container-base-image
+      organization: twdps
+      image: gha-container-base-image
       sign-image: true
       sbom: true
       release-notes: true
-      release-message: New release Alpine ThoughtWorks-DPS/gha-container-base-image
+      release-message: New release Alpine twplatformlabs/gha-container-base-image
       before-publish: true
 
   ubuntu-22-publish:
@@ -39,7 +40,7 @@ jobs:
       sbom: true
       release-notes: true
       release-body-path: release-notes.md
-      release-message: New release Ubuntu 22.04 ThoughtWorks-DPS/gha-container-base-image
+      release-message: New release Ubuntu 22.04 twplatformlabs/gha-container-base-image
       before-publish: gha-container-base-image_dev.${GITHUB_SHA:0:7}_docker_build.log
 
   # ubuntu-24-publish:
