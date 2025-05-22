@@ -27,22 +27,22 @@ jobs:
       before-publish: true
       pull-tag: dev.${GITHUB_SHA:0:7}
 
-  ubuntu-22-publish:
-    name: publish ubuntu.22 image
-    uses: twplatformlabs/gha-tools-action/.github/workflows/publish-container.yaml@main
-    secrets:
-      OP_SERVICE_ACCOUNT_TOKEN: ${{ secrets.OP_SERVICE_ACCOUNT_TOKEN }}
-    with:
-      organization: twdps
-      image: gha-container-base-image
-      tag-annotation: 22.04-
-      release-tag: 22.04
-      sign-image: true
-      sbom: true
-      release-notes: true
-      release-body-path: release-notes.md
-      release-message: New release Ubuntu 22.04 twplatformlabs/gha-container-base-image
-      before-publish: gha-container-base-image_dev.${GITHUB_SHA:0:7}_docker_build.log
+  # ubuntu-22-publish:
+  #   name: publish ubuntu.22 image
+  #   uses: twplatformlabs/gha-tools-action/.github/workflows/publish-container.yaml@main
+  #   secrets:
+  #     OP_SERVICE_ACCOUNT_TOKEN: ${{ secrets.OP_SERVICE_ACCOUNT_TOKEN }}
+  #   with:
+  #     organization: twdps
+  #     image: gha-container-base-image
+  #     tag-annotation: 22.04-
+  #     release-tag: 22.04
+  #     sign-image: true
+  #     sbom: true
+  #     release-notes: true
+  #     release-body-path: release-notes.md
+  #     release-message: New release Ubuntu 22.04 twplatformlabs/gha-container-base-image
+  #     before-publish: gha-container-base-image_dev.${GITHUB_SHA:0:7}_docker_build.log
 
   # ubuntu-24-publish:
   #   name: publish ubuntu.24 image
