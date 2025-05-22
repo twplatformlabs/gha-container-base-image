@@ -2,6 +2,81 @@
 version: v1.25.0
 # Nearly all CVE's are remediated by virtue of the runtime context, e.g., on an ephemeral circleci executor.
 ignore:
+ # Critical severity vulnerabilities
+  SNYK-GOLANG-GOLANGORGXCRYPTOSSH-8496611:
+    - '*':
+        reason: >-
+          Incorrect Implementation of Authentication Algorithm in golang.org/x/crypto/ssh@v0.27.0
+          Fixed in v0.31.0 - awaiting dependency update
+        expires: 2025-08-22T00:00:00.000Z
+  # High severity vulnerabilities
+  SNYK-GOLANG-GOLANGORGXOAUTH2JWS-8749594:
+    - '*':
+        reason: >-
+          Allocation of Resources Without Limits or Throttling in golang.org/x/oauth2/jws@v0.23.0
+          Fixed in v0.27.0 - awaiting dependency update
+        expires: 2025-08-22T00:00:00.000Z
+  SNYK-GOLANG-GOLANGORGXNETHTTPHTTPPROXY-9058601:
+    - '*':
+        reason: >-
+          Server-side Request Forgery (SSRF) in golang.org/x/net/http/httpproxy@v0.29.0
+          Fixed in v0.36.0 - awaiting dependency update
+        expires: 2025-08-22T00:00:00.000Z
+  SNYK-GOLANG-GOLANGORGXNETHTML-8535262:
+    - '*':
+        reason: >-
+          Denial of Service (DoS) in golang.org/x/net/html@v0.29.0
+          Fixed in v0.33.0 - awaiting dependency update
+        expires: 2025-08-22T00:00:00.000Z
+  SNYK-GOLANG-GOLANGORGXCRYPTOSSH-8747056:
+    - '*':
+        reason: >-
+          Allocation of Resources Without Limits or Throttling in golang.org/x/crypto/ssh@v0.27.0
+          Fixed in v0.35.0 - awaiting dependency update
+        expires: 2025-08-22T00:00:00.000Z
+  SNYK-GOLANG-GITHUBCOMHASHICORPVAULTPLUGINAUTHAZURE-10006774:
+    - '*':
+        reason: >-
+          Incorrect Authorization in github.com/hashicorp/vault-plugin-auth-azure@v0.19.0
+          Fixed in v0.20.2 - awaiting dependency update
+        expires: 2025-08-22T00:00:00.000Z
+  SNYK-GOLANG-GITHUBCOMGOLANGJWTJWTV5-9510922:
+    - '*':
+        reason: >-
+          Asymmetric Resource Consumption (Amplification) in github.com/golang-jwt/jwt/v5@v5.2.1
+          Fixed in v5.2.2 - awaiting dependency update
+        expires: 2025-08-22T00:00:00.000Z
+  SNYK-GOLANG-GITHUBCOMGOLANGJWTJWTV4-9510921:
+    - '*':
+        reason: >-
+          Asymmetric Resource Consumption (Amplification) in github.com/golang-jwt/jwt/v4@v4.5.0
+          Fixed in v4.5.2 - awaiting dependency update
+        expires: 2025-08-22T00:00:00.000Z
+  # Medium severity vulnerabilities
+  SNYK-GOLANG-GOLANGORGXNETHTML-9572088:
+    - '*':
+        reason: >-
+          Improper Validation of Syntactic Correctness of Input in golang.org/x/net/html@v0.29.0
+          Fixed in v0.38.0 - awaiting dependency update
+        expires: 2025-08-22T00:00:00.000Z
+  SNYK-GOLANG-GITHUBCOMSNOWFLAKEDBGOSNOWFLAKE-9901390:
+    - '*':
+        reason: >-
+          Time-of-check Time-of-use (TOCTOU) Race Condition in github.com/snowflakedb/gosnowflake@v1.11.0
+          Fixed in v1.13.3 - awaiting dependency update
+        expires: 2025-08-22T00:00:00.000Z
+  SNYK-GOLANG-GITHUBCOMGOJOSEGOJOSEV4-8745975:
+    - '*':
+        reason: >-
+          Allocation of Resources Without Limits or Throttling in github.com/go-jose/go-jose/v4@v4.0.4
+          Fixed in v4.0.5 - awaiting dependency update
+        expires: 2025-08-22T00:00:00.000Z
+  SNYK-GOLANG-GITHUBCOMGOJOSEGOJOSEV3-8754524:
+    - '*':
+        reason: >-
+          Allocation of Resources Without Limits or Throttling in github.com/go-jose/go-jose/v3@v3.0.3
+          Fixed in v3.0.4 - awaiting dependency update
+        expires: 2025-08-22T00:00:00.000Z
   SNYK-GOLANG-GOOGLEGOLANGORGPROTOBUFENCODINGPROTOJSON-6393703:
     - "*":
       reason: Infinite loop
