@@ -20,7 +20,7 @@ ENV LANG="C.UTF-8" \
     LANGUAGE="en_US.UTF-8" \
     LC_ALL="en_US.UTF-8"
 
-# hadolint ignore=DL3003,DL3004,DL4001,SC2035
+# hadolint ignore=DL3003,DL3004,DL4001,SC2035,DL3018
 RUN apk add --no-cache \
         git \
         github-cli \
