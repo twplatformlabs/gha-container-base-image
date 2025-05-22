@@ -25,6 +25,7 @@ jobs:
       release-notes: true
       release-message: New release Alpine twplatformlabs/gha-container-base-image
       before-publish: true
+      pull-tag: dev.${GITHUB_SHA:0:7}
 
   ubuntu-22-publish:
     name: publish ubuntu.22 image
